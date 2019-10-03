@@ -1,0 +1,57 @@
+{
+  "name": "the-arf",
+  "version": "0.0.1",
+  "description": "A discussion board based on arweave & arbase technology",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel public/index.html",
+    "build": "rm -rf dist && parcel build public/index.html",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "arweave",
+    "arbase"
+  ],
+  "author": "Maciej Krüger <mkg20001@gmail.com>",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "@babel/plugin-syntax-async-generators": "^7.2.0",
+    "@babel/runtime": "^7.6.2",
+    "@forevolve/bootstrap-dark": "github:mkg20001/bootstrap-dark",
+    "@fortawesome/fontawesome-free": "^5.11.2",
+    "@sentry/browser": "^5.6.3",
+    "babel-core": "^6.26.3",
+    "babel-polyfill": "^6.26.0",
+    "bootstrap": "^4.3.1",
+    "jquery": ">=3.4.1",
+    "parcel": "^1.12.3",
+    "popper.js": "^1.15.0",
+    "string-to-color": "^2.1.1",
+    "sweetalert2": "^8.18.0",
+    "vue": "^2.6.10",
+    "vue-global-options": "^1.0.1",
+    "vue-hot-reload-api": "^2.3.4",
+    "vue-i18n": "^8.14.1",
+    "vue-resource": "^1.5.1",
+    "vue-router": "^3.1.3",
+    "whatwg-fetch": "^3.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "@vue/component-compiler-utils": "^3.0.0",
+    "mocha": "^6.2.1",
+    "sass": "^1.23.0",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mkg20001/the-arf.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mkg20001/the-arf/issues"
+  },
+  "homepage": "https://github.com/mkg20001/the-arf#readme"
+}
