@@ -22,9 +22,7 @@ if (!window.fetch) {
 
 require('sweetalert2')
 
-const api = require('./api').default({
-  versionPrefix: 'v0'
-})
+const api = require('./api').default()
 window.swal = require('sweetalert2')
 
 /* if (!module.hot) {
@@ -126,12 +124,7 @@ async function initApp () {
   }
 
   try {
-    user = {
-      loggedIn: false,
-      config: JSON.parse(window.localStorage.getItem('userconfig') || '{}'),
-      permissions: [],
-      p: {}
-    }
+    user = await api.json('a/info')
 
     user.config = ui = user.config || {} // sync
 
@@ -153,6 +146,13 @@ async function initApp () {
       api,
       config: {},
       user,
+      ui: syncedData(ui, {
+        dark: false,
+        showNav: false
+      }, () => {
+        userValueChange()
+
+      })
     })
   } catch (err) {
     voidWarranty(err.toString())

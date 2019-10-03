@@ -1,7 +1,7 @@
-const api = ({versionPrefix}) => {
+const api = () => {
   const fetch = window.fetch
 
-  const base = `/api/${versionPrefix}/`
+  const base = `/api/`
 
   const API = {
     json: async (url) => {
@@ -26,11 +26,6 @@ const api = ({versionPrefix}) => {
       json._req = req
 
       return json
-    },
-    areWeLoggedInYet: async () => {
-      // TODO: fetch profile, return false if 403, return true if 200
-      const req = await fetch(`${base}user/profile`)
-      return req.status < 400 // TODO: does it throw when 5XX?
     }
   }
 

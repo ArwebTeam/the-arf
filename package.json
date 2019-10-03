@@ -21,7 +21,7 @@
     "@forevolve/bootstrap-dark": "github:mkg20001/bootstrap-dark",
     "@fortawesome/fontawesome-free": "^5.11.2",
     "@sentry/browser": "^5.6.3",
-    "arweb": "^0.0.3",
+    "arweb": "^0.0.5",
     "babel-core": "^6.26.3",
     "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.3.1",
