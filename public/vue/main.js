@@ -73,5 +73,59 @@ $(document).on('click', 'a', function (e) {
 
 Vue.use(VueRouter)
 
+function voidWarranty (e) {
+  $('#state').text(e)
+  $('body').addClass('has-error')
+}
+
+function state (s) {
+  $('#state').text(s)
+}
+
 $(document).ready(async () => {
+  try {
+    let res = await window.fetch('/sw')
+    res = res.json()
+    if (!res) {
+      throw new Error('Not sw')
+    }
+
+    initApp()
+  } catch (err) {
+    state('Installing service worker')
+
+    // register the SW
+    if ('serviceWorker' in navigator) {
+      // Register a service worker hosted at the root of the
+      // site using the default scope.
+      navigator.serviceWorker.register('/sw.js').then(function (registration) {
+        console.log('Service worker registration succeeded:', registration)
+        state('Loading app')
+        window.location.reload()
+      }, /* catch */ function (error) {
+        voidWarranty(error.toString())
+      })
+    } else {
+      voidWarranty('Service workers not supported')
+    }
+  }
 })
+
+async function initApp () {
+  // load user info
+  let user
+  let ui = {}
+
+  function userValueChange () {
+    if (ui.dark) {
+      $('body').removeClass('bs-light').addClass('bs-dark')
+    } else {
+      $('body').removeClass('bs-dark').addClass('bs-light')
+    }
+  }
+
+  try {
+  } catch (err) {
+    voidWarranty(err.toString())
+  }
+}

@@ -5,6 +5,15 @@ body {
   margin: 0;
 }
 
+body.has-error, .has-error #state {
+  color: #ffffffa0 !important;
+  background: #ff4444 !important;
+  font-weight: 800;
+}
+.has-error .spinner {
+  display: none;
+}
+
 #state {
   color: #2365a4;
   font-weight: 200;
