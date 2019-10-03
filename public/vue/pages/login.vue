@@ -9,7 +9,7 @@
       <br>
       <div style="max-width: 669px" class="light-card" v-if="info.address">
         <img src="../../img/arweave.png" alt="Arweave Logo" width="64" style="display: block; position: absolute; margin-top: 16px; filter: opacity(0.6);" />
-        <i class="fas fa-key fa-4x" style="display: block; position: absolute; margin-left: auto; margin-top: 16px; filter: opacity(0.6);"></i>
+        <i class="material-icons fa-4x" style="display: block; position: absolute; margin-left: auto; margin-top: 16px; filter: opacity(0.6);">vpn_key</i>
         <h5>Address: <tt>{{info.address}}</tt></h5>
         <h5>Balance: {{info.balanceAr}}</h5>
         <h5>Last Transaction: <tt>{{info.lastTXID}}</tt></h5>
@@ -79,13 +79,14 @@
   export default {
     name: 'login',
     data: () => ({
-      info: {
-        address: 'qY6XZdOFKAUArsjIl9B_YcnExaJMT0mBFOPVCLSlXhM'
-      },
+      info: {},
       keyfile: {}
     }),
     methods: {
       onFile() {
+        this.info = {}
+        this.keyfile = {}
+
         const file = this.$refs.keyfile.files[0]
 
         if (!file) {
