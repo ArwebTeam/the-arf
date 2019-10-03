@@ -5,10 +5,16 @@ body {
   margin: 0;
 }
 
+body {
+  transition: .5s;
+}
+
 body.has-error, .has-error #state {
   color: #ffffffa0 !important;
-  background: #ff4444 !important;
   font-weight: 800;
+}
+body.has-error {
+  background: #ff4444 !important;
 }
 .has-error .spinner {
   display: none;
