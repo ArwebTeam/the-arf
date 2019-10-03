@@ -1,0 +1,24 @@
+{
+  "home": {
+    "welcome": "Welcome to The ARF"
+  },
+  "404": {
+    "title": "Not found",
+    "desc": "This page wasn't found!"
+  },
+  "settings": {
+    "title": "Settings",
+    "lang": "Language",
+    "dark": "Dark Mode",
+    "dark_desc": "Activate dark mode",
+    "locale": {
+      "en": "English",
+      "de": "German (Deutsch)"
+    }
+  },
+  "login": {
+    "title": "Login",
+    "keyfile": "Arweave KeyFile",
+    "error": "Error while logging in!"
+  }
+}
