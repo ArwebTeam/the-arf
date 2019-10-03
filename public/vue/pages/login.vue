@@ -22,60 +22,6 @@
 </style>
 
 <script>
-  function readBlob (str) {
-    let i = 5 // skip data;
-
-    let mime = ''
-    let enc = ''
-    let data = ''
-
-    let block = 'mime'
-
-    while (str.length > i) {
-      let cur = str[i]
-
-      switch(block) {
-        case 'mime': {
-          if (cur === ';') {
-            block = 'enc'
-          } else {
-            mime += cur
-          }
-
-          i++
-
-          break
-        }
-        case 'enc': {
-          if (cur === ',') {
-            block = 'data'
-          } else {
-            enc += cur
-          }
-
-          i++
-
-          break
-        }
-        case 'data': {
-          data += cur
-          i++
-
-          break
-        }
-        default: {
-          throw new TypeError('d')
-        }
-      }
-    }
-
-    return {
-      encoding: enc,
-      mime,
-      data
-    }
-  }
-
   export default {
     name: 'login',
     data: () => ({
@@ -96,17 +42,19 @@
         const reader = new FileReader()
 
         reader.onload = async (e) => {
-          // console.log(readBlob(reader.result))
+          const res = await window.fetch(reader.result)
 
-          let res = await window.fetch(reader.result)
-          res = await res.json()
+          this.keyfile = await res.json()
 
-          this.keyfile = res
-
-          this.info = await this.$api.postJson('a/keyfile', res)
+          this.info = await this.$api.postJson('a/keyfile', this.keyfile)
         }
 
         reader.readAsDataURL(file)
+      },
+      doLogin() {
+        if (this.keyfile) {
+
+        }
       }
     }
   }
