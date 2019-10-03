@@ -1,1 +1,24 @@
-{}
+{
+  "home": {
+    "welcome": "Willkommen im Arweave Forum"
+  },
+  "404": {
+    "title": "Nicht Gefunden",
+    "desc": "Diese Seite existiert nicht"
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "lang": "Sprache",
+    "dark": "Dunkler Modus",
+    "dark_desc": "Dunklen Modus aktivieren",
+    "locale": {
+      "en": "Englisch (English)",
+      "de": "Deutsch"
+    }
+  },
+  "login": {
+    "title": "Anmelden",
+    "keyfile": "Arweave Schlüsseldatei",
+    "error": "Fehler beim Anmelden!"
+  }
+}

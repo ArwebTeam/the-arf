@@ -65,7 +65,7 @@ window.router = router
 // click intercept
 $(document).on('click', 'a', function (e) {
   const href = $(this).attr('href')
-  if (href && href.startsWith('/') && !href.startsWith('/auth')) {
+  if (href && href.startsWith('/')) {
     e.preventDefault()
     router.push(href)
   }
@@ -125,6 +125,16 @@ async function initApp () {
   }
 
   try {
+    user = {
+      loggedIn: false,
+      config: JSON.parse(window.localStorage.getItem('userconfig') || '{}'),
+      permissions: [],
+      p: {}
+    }
+
+    user.config = ui = user.config || {} // sync
+
+    userValueChange()
 
     // hide spinner
     $('#load').hide()

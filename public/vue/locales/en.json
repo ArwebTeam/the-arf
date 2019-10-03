@@ -18,7 +18,7 @@
   },
   "login": {
     "title": "Login",
-    "keyfile": "Arweave KeyFile",
+    "keyfile": "Arweave Keyfile",
     "error": "Error while logging in!"
   }
 }

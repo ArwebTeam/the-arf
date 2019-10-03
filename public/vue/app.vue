@@ -7,6 +7,12 @@
         <a style="border: none !important;" href="https://github.com/mkg20001/the-arf" class="btn btn-outline-dark">
           <i class="fa fa-bug"></i>
         </a>
+        <a v-if="$user.loggedIn" style="border: none !important;" href="/profile" class="btn btn-outline-secondary">
+          <i class="fa fa-user-circle"></i> {{$user.display}}
+        </a>
+        <a v-else href="/login" class="btn btn-outline-dark">
+          <i class="fa fa-user-circle"></i> {{ $t('login.title') }}
+        </a>
       </div>
     </nav>
 
