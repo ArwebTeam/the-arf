@@ -125,6 +125,24 @@ async function initApp () {
   }
 
   try {
+
+    // hide spinner
+    $('#load').hide()
+
+    // launch app
+    window.app = new Vue({
+      el: 'app',
+      router,
+      i18n,
+      components: {
+        app: require('./app.vue').default
+      },
+
+      // globally exposed variables
+      api,
+      config: {},
+      user,
+    })
   } catch (err) {
     voidWarranty(err.toString())
   }
