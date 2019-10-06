@@ -12,7 +12,7 @@ const api = () => {
 
       return json
     },
-    postJson: async (url, body) => {
+    postJson: async (url, body, notJSON) => {
       const req = await fetch(`${base}${url}`, {
         method: 'POST',
         headers: {
@@ -21,9 +21,9 @@ const api = () => {
         },
         body: JSON.stringify(body)
       })
-      const json = await req.json()
+      const json = await (notJSON ? req.text() : req.json())
 
-      json._req = req
+      if (!notJSON) { json._req = req }
 
       return json
     }

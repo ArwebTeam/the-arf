@@ -10,8 +10,9 @@ import VueRouter from 'vue-router'
 import VueI18n from 'vue-i18n'
 
 import syncedData from './syncedData'
-import '@forevolve/bootstrap-dark/scss/_toggle-light.scss'
-import '@forevolve/bootstrap-dark/scss/_toggle-dark.scss'
+import '@forevolve/bootstrap-dark/scss/toggle-bootstrap.scss'
+import '@forevolve/bootstrap-dark/scss/toggle-bootstrap-dark.scss'
+
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import '../css/main.scss'
 const $ = window.jQuery = require('jquery')
@@ -24,6 +25,12 @@ require('sweetalert2')
 
 const api = require('./api').default()
 window.swal = require('sweetalert2')
+window.Toast = window.swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 5000
+})
 
 /* if (!module.hot) {
   Sentry.init({
@@ -64,7 +71,7 @@ window.router = router
 // click intercept
 $(document).on('click', 'a', function (e) {
   const href = $(this).attr('href')
-  if (href && href.startsWith('/')) {
+  if (href && href.startsWith('/') && href !== window.app.$route.fullPath) {
     e.preventDefault()
     router.push(href)
   }
@@ -84,8 +91,8 @@ function state (s) {
 $(document).ready(async () => {
   try {
     let res = await window.fetch('/sw')
-    res = res.json()
-    if (!res) {
+    res = await res.json()
+    if (res !== true) {
       throw new Error('Not sw')
     }
 

@@ -34,6 +34,6 @@ arweb.sw({
   a.route({
     method: 'GET',
     path: '/sw',
-    handler: () => 'true'
+    handler: (request, h) => h.response(true)
   })
 })

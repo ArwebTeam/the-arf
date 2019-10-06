@@ -8,7 +8,7 @@
           <i class="fa fa-bug"></i>
         </a>
         <a v-if="$user.loggedIn" style="border: none !important;" href="/profile" class="btn btn-outline-secondary">
-          <i class="fa fa-user-circle"></i> {{$user.display}}
+          <i class="fa fa-user-circle"></i> {{$user.address}}
         </a>
         <a v-else href="/login" class="btn btn-outline-dark">
           <i class="fa fa-user-circle"></i> {{ $t('login.title') }}
