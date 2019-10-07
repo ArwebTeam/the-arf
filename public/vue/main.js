@@ -71,9 +71,11 @@ window.router = router
 // click intercept
 $(document).on('click', 'a', function (e) {
   const href = $(this).attr('href')
-  if (href && href.startsWith('/') && href !== window.app.$route.fullPath) {
+  if (href && href.startsWith('/')) {
     e.preventDefault()
-    router.push(href)
+    if (href !== window.app.$route.fullPath) {
+      router.push(href)
+    }
   }
 })
 
