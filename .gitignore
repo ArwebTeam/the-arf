@@ -11,6 +11,6 @@ dist
 .cache
 .parcel-cache
 
-# backend
+# "backend"
 
-config.yaml
+generated.js
