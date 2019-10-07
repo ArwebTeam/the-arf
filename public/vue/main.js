@@ -161,6 +161,7 @@ async function initApp () {
       }, () => {
         userValueChange()
 
+        api.postJson('a/info/config', user.config).catch(console.error)
       })
     })
   } catch (err) {
