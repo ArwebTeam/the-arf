@@ -36,6 +36,8 @@ async function main () {
     path: '/sw',
     handler: (request, h) => h.response(true)
   })
+
+  a.isReady()
 }
 
 main()
