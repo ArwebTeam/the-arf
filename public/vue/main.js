@@ -90,10 +90,11 @@ function state (s) {
   $('#state').text(s)
 }
 
-$(document).ready(async () => {
+async function onReady () {
   try {
     let res = await window.fetch('/sw')
     res = await res.json()
+
     if (res !== true) {
       throw new Error('Not sw')
     }
@@ -109,7 +110,8 @@ $(document).ready(async () => {
       navigator.serviceWorker.register('/sw.js').then(function (registration) {
         console.log('Service worker registration succeeded:', registration)
         state('Loading app')
-        window.location.reload()
+        // TODO: verify latest version THEN init
+        onReady()
       }, /* catch */ function (error) {
         voidWarranty(error.toString())
       })
@@ -117,7 +119,7 @@ $(document).ready(async () => {
       voidWarranty('Service workers not supported')
     }
   }
-})
+}
 
 async function initApp () {
   // load user info
@@ -168,3 +170,5 @@ async function initApp () {
     voidWarranty(err.toString())
   }
 }
+
+$(document).ready(onReady)
