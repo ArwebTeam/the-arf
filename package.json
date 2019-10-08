@@ -8,7 +8,8 @@
     "start": "npm run prebuild && scripty",
     "prebuild": "arbase node:$PWD/arbase.js arbase-crud > public/generated.js",
     "build": "rm -rf dist && npm run prebuild && scripty",
-    "prepublishOnly": "nmp run prebuild && npm run build"
+    "prepublishOnly": "npm run prebuild && npm run build",
+    "publish": "scripty"
   },
   "keywords": [
     "arweave",
