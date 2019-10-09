@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run prebuild && scripty",
-    "prebuild": "arbase node:$PWD/arbase.js arbase-crud > public/generated.js",
+    "prebuild": "arbase node:$PWD/arbase.js > public/generated.js",
     "build": "rm -rf dist && npm run prebuild && scripty",
     "prepublishOnly": "npm run prebuild && npm run build",
     "publish": "scripty"
@@ -19,14 +19,14 @@
   "license": "GPL-3.0",
   "dependencies": {
     "@babel/plugin-syntax-async-generators": "^7.2.0",
-    "@babel/runtime": "^7.6.2",
-    "@babel/runtime-corejs3": "^7.6.2",
+    "@babel/runtime": "^7.6.3",
+    "@babel/runtime-corejs3": "^7.6.3",
     "@forevolve/bootstrap-dark": "github:mkg20001/bootstrap-dark",
     "@fortawesome/fontawesome-free": "^5.11.2",
     "@sentry/browser": "^5.6.3",
-    "arbase": "^0.0.2",
-    "arbase-crud": "^0.0.3",
-    "arweb": "^0.0.6",
+    "arbase": "^0.1.1",
+    "arbase-crud": "^0.1.1",
+    "arweb": "^0.0.7",
     "babel-core": "^6.26.3",
     "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.3.1",
@@ -46,9 +46,9 @@
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.6.2",
+    "@babel/core": "^7.6.3",
     "@babel/plugin-transform-runtime": "^7.6.2",
-    "@babel/preset-env": "^7.6.2",
+    "@babel/preset-env": "^7.6.3",
     "@vue/component-compiler-utils": "^3.0.0",
     "mocha": "^6.2.1",
     "sass": "^1.23.0",

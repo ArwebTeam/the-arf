@@ -4,6 +4,7 @@ module.exports = {
   post: { // let's first create a post
     attributes: { // it's got some attributes
       title: { // like a titlte
+        id: 0, // ...which has the internal id 0 (this is used by protobuf)
         type: 'string', // ...which is a string
         maxSize: 1000, // ...that's limited to 1k characters
         notNull: true, // ...and can't be empty
@@ -13,6 +14,7 @@ module.exports = {
         ]
       },
       content: { // every post also has content, which has basically the same rules
+        id: 1,
         type: 'string',
         maxSize: 10000, // ...except it's 10k chars long
         notNull: true,
@@ -22,6 +24,7 @@ module.exports = {
         ]
       },
       replies: { // then we have the replies
+        id: 2, // TODO: use id for internal list reference (instead of $block posts we use $block id)
         type: 'post[]', // that's basically a list of posts (posts can have their own replies, like in reddit or discourse - really, just different rendering)
         // this list doesn't have a maxSize, since they can be grown infinetly without too much impact (TODO: really good idea?), but technically it can be set
         // notNull is also not set, since posts usually are created without replies
@@ -47,6 +50,7 @@ module.exports = {
   topic: { // now let's make the topics
     attributes: {
       title: { // every topics has a title
+        id: 0,
         type: 'string',
         maxSize: 1000,
         notNull: true,
@@ -55,6 +59,7 @@ module.exports = {
         ]
       },
       description: { // and a short description
+        id: 1,
         type: 'string',
         maxSize: 1000,
         notNull: true,
@@ -63,6 +68,7 @@ module.exports = {
         ]
       },
       posts: { // also it can contain posts, similar to replies
+        id: 2,
         type: 'post[]',
         append: [
           '*', // again everyone can reply to it
@@ -70,6 +76,7 @@ module.exports = {
         ]
       },
       topics: { // and it can contain sub-topics
+        id: 3,
         type: 'topic[]',
         append: [ // ..which only moderators can add
           '$~moderators'
@@ -105,6 +112,7 @@ module.exports = {
   board: { // this is our board
     attributes: {
       name: { // every board has a name
+        id: 0,
         type: 'string',
         maxSize: 1000,
         notNull: true,
@@ -113,6 +121,7 @@ module.exports = {
         ]
       },
       description: { // and a short description
+        id: 1,
         type: 'string',
         maxSize: 1000,
         notNull: true,
@@ -121,6 +130,7 @@ module.exports = {
         ]
       },
       topics: { // and it can contain topics
+        id: 2,
         type: 'topic[]',
         append: [ // ..which only moderators can add
           '$~moderators'
