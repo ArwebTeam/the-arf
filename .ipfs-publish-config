@@ -1,6 +1,6 @@
 ENTRY=public/index.html
 FLAGS_BUILD=()
-FLAGS_START=(--no-source-maps)
+FLAGS_START=()
 
 DNS_PROV=cf
 DOMAIN=the-arf.mkg20001.io
