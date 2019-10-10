@@ -1,3 +1,52 @@
+/* Main elem */
+
+.icon-bulb {
+  background: black;
+  color: white;
+  padding: .512em;
+  font-size: 2.56em;
+  border-radius: 50%;
+}
+
+.topic-list {
+  display: flex;
+  flex-direction: row;
+  margin-left: 2em;
+  cursor: pointer;
+}
+
+.topic-list:hover {
+  background: #00000010;
+}
+
+.topic-list > * {
+  margin: .512em .438em;
+}
+
+.topic-sub > * {
+  margin: 0 !important;
+}
+
+.topic-sub {
+  padding: .6em;
+}
+
+.topic-sub h1 {
+  color: #8f8f8f;
+}
+
+.topic-sub h2 {
+  color: #bfbfbf;
+}
+
+.add-btn .icon-bulb {
+  background: #ee0000;
+}
+
+.add-btn:hover {
+  background: #ff000010;
+}
+
 /* Page */
 
 body {
