@@ -1,7 +1,7 @@
 <template>
   <div id="app" :class="'ui ui-' + ($ui.dark ? 'dark' : 'light')">
     <nav :class="'navbar ' + ($ui.dark ? 'navbar-dark bg-dark' : 'navbar-light bg-light')">
-      <a class="navbar-brand" href="/"><img src="../img/logo.svg" height="40" alt="The ARF" /></a>
+      <a style="font-size: 28px" class="navbar-brand" href="/"><img src="../img/icon.svg" height="40" alt="The ARF" /> <b>arf</b></a>
 
       <div>
         <a style="border: none !important;" href="https://github.com/mkg20001/the-arf" class="btn btn-outline-dark">

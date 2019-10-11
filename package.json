@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run prebuild && scripty",
+    "start": "npm run prebuild && BABEL_ENV=dev scripty",
     "prebuild": "arbase node:$PWD/arbase.js > public/generated.js",
-    "build": "rm -rf dist && npm run prebuild && scripty",
+    "build": "rm -rf dist && npm run prebuild && BABEL_ENV=prod scripty",
     "prepublishOnly": "npm run prebuild && npm run build",
     "publish": "scripty"
   },

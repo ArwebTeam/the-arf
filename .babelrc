@@ -1,10 +1,24 @@
 {
-    "presets": [
-        ["env", {
-            "targets": {
-                "browsers": ["last 1 chrome version"]
-            }
-        }]
-    ],
-    "plugins": [["@babel/plugin-transform-runtime", { "absoluteRuntime": false, "corejs": 3, "helpers": true, "regenerator": true, "useESModules": false }]]
+  "env": {
+    "dev": {
+      "presets": [
+          ["env", {
+              "targets": {
+                  "browsers": ["last 1 chrome version"]
+              }
+          }]
+      ],
+      "plugins": [["@babel/plugin-transform-runtime", { "absoluteRuntime": false, "corejs": 3, "helpers": true, "regenerator": true, "useESModules": false }]]
+     },
+    "test": {
+      "presets": [
+          ["env", {
+              "targets": {
+                  "browsers": ["last 1 version", "> 5%"]
+              }
+          }]
+      ],
+      "plugins": [["@babel/plugin-transform-runtime", { "absoluteRuntime": false, "corejs": 3, "helpers": true, "regenerator": true, "useESModules": false }]]
+    }
+  }
 }
