@@ -29,7 +29,8 @@ async function main () {
     } */
   })
 
-  await require('./generated')(a)
+  const arbase = require('./generated')
+  await (require('arbase-crud')(a, arbase, {prefix: '/api'}))
 
   a.route({
     method: 'GET',
