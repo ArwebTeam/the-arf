@@ -148,7 +148,9 @@
       getViewFromRoute: async function () {
         this.error = null
 
-        const {id} = this.$route.params
+        const {id, parent} = this.$route.params
+
+        this.parent = parent
 
         switch (true) {
           case id === 'create': {
