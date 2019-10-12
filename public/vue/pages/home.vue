@@ -42,25 +42,7 @@
     <br>
     <br>
 
-    <h1>Topics</h1>
-    <br>
-
-    <div class="topic-list" v-for="topic in topics">
-      <i class="fa fa-3x icon-bulb fa-comment" :style="`background: ${str2col(topic.name)};`"></i>
-      <div class="topic-sub">
-        <h1>{{topic.name}}</h1>
-        <h2>{{topic.description}}</h2>
-      </div>
-    </div>
-
-    <div class="topic-list add-btn">
-      <i class="fa fa-3x icon-bulb fa-plus"></i>
-      <div class="topic-sub">
-        <h1>Add</h1>
-        <h2>Create a new topic</h2>
-      </div>
-    </div>
-
+    <topics></topics>
   </div>
 </template>
 
@@ -68,14 +50,12 @@
 </style>
 
 <script>
+  import topics from './topics.vue'
   export default {
     name: 'home',
-    data: () => ({
-      isLive: !module.hot,
-      topics: [{name: 'test', description: 'test'}, {name: 'test2', description: 'uffffffffff'}]
-    }),
-    methods: {
-      str2col: require('string-to-color')
+    data: () => ({ }),
+    components: {
+      topics
     }
   }
 </script>
