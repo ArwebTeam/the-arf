@@ -96,7 +96,7 @@
         }
       },
       doFetch: async function () {
-        const res = await window.fetch(`/api/${this.resource}?` + String(new URLSearchParams(this.$route.query)))
+        const res = await window.fetch(`/api/${this.parentResource}/${this.parent}/${this.parentList}?` + String(new URLSearchParams(this.$route.query)))
         const data = await res.json()
 
         const totalCount = parseInt(res.headers.get('x-total-count'), 10)
@@ -148,7 +148,9 @@
       getViewFromRoute: async function () {
         this.error = null
 
-        const {id} = this.$route.params
+        const {id, parent} = this.$route.params
+
+        this.parent = parent
 
         switch (true) {
           case id === 'create': {
@@ -207,13 +209,13 @@
       },
       submit: async function () {
         try {
-          const res = await window.fetch(`/api/${this.resource}/${this.$route.params.id === 'create' ? '' : this.$route.params.id}`, {
+          const res = await window.fetch(`/api/${this.resource}/${this.$route.params.id === 'create' ? '' : '/' + this.$route.params.id}`, {
             method: 'POST',
             headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify(this.$route.params.id === 'create' ? {tags: this.tags, item: this.item}  : this.item)
+            body: JSON.stringify(this.item)
           })
           const data = await res.json()
 
