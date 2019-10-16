@@ -1,12 +1,12 @@
 <template>
   <div>
-    <page resource="topic">
-      <template name="header">
+    <page resource="topic" :allowCreate="$user.loggedIn">
+      <template slot="header">
         <h1>{{ $t('topics.title') }}</h1>
         <br>
       </template>
 
-      <template name="elements" scope="t">
+      <template slot="elements" scope="t">
         <div class="topic-list" v-for="topic in t.data">
           <i class="fa fa-3x icon-bulb fa-comment" :style="`background: ${str2col(topic.name)};`"></i>
           <div class="topic-sub">
@@ -16,7 +16,7 @@
         </div>
       </slot>
 
-      <template name="actions">
+      <template name="actions"> <!-- TODO: fix showing via slot -->
         <div class="topic-list add-btn">
           <i class="fa fa-3x icon-bulb fa-plus"></i>
           <div class="topic-sub">
