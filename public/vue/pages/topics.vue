@@ -1,6 +1,6 @@
 <template>
   <div>
-    <page resource="topic" :allowCreate="$user.loggedIn">
+    <page resource="topic" :tags="{board: this.$route.params.board}" :allowCreate="$user.loggedIn">
       <template slot="header">
         <h1>{{ $t('topics.title') }}</h1>
         <br>
