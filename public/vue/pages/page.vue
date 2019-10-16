@@ -15,8 +15,8 @@
         <h1>{{resource}}</h1>
       </slot>
 
-      <slot name="elements" :data="data" :eDelete="(id) => deleteElement(id)" :eView="(id) => changeView(id)" :eEdit="(id) => changeView(id, {edit: '1'})">>
-        <slot v-for="element in data" name="element" :data="element" :eDelete="() => deleteElement(element.id)" :eView="() => changeView(element.id)" :eEdit="() => changeView(element.id, {edit: '1'})">></slot>
+      <slot name="elements" :data="data" :eDelete="(id) => deleteElement(id)" :eView="(id) => changeView(id)" :eEdit="(id) => changeView(id, {edit: '1'})">
+        <slot v-for="element in data" name="element" :data="element" :eDelete="() => deleteElement(element.id)" :eView="() => changeView(element.id)" :eEdit="() => changeView(element.id, {edit: '1'})"></slot>
       </slot>
 
       <slot name="actions" :link="() => changeView('create')">

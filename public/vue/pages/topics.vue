@@ -14,17 +14,17 @@
             <h2>{{topic.description}}</h2>
           </div>
         </div>
-      </slot>
+      </template>
 
-      <template name="actions"> <!-- TODO: fix showing via slot -->
-        <div class="topic-list add-btn">
+      <template slot="actions" scope="t"> <!-- TODO: fix showing via slot -->
+        <div @click="t.link()" class="topic-list add-btn">
           <i class="fa fa-3x icon-bulb fa-plus"></i>
           <div class="topic-sub">
             <h1>Add</h1>
             <h2>Create a new topic</h2>
           </div>
         </div>
-      </slot>
+      </template>
     </page>
   </div>
 </template>
