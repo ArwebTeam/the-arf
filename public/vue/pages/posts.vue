@@ -1,6 +1,6 @@
 <template>
   <div>
-    <page resource="topic" :tags="{board: this.$route.params.board}" :allowCreate="$user.loggedIn">
+    <page resource="post" :tags="{board: this.$route.params.board}" :allowCreate="$user.loggedIn">
       <template slot="header">
         <h1>{{ $t('posts.title') }}</h1>
         <br>
@@ -8,10 +8,10 @@
 
       <template slot="elements" scope="t">
         <div class="topic-list" v-for="post in t.data">
-          <i class="fa fa-3x icon-bulb fa-comment" :style="`background: ${str2col(post.name)};`"></i>
+          <i class="fa fa-3x icon-bulb fa-comment" :style="`background: ${str2col(post.title)};`"></i>
           <div class="topic-sub">
             <h1>{{post.name}}</h1>
-            <h2>{{post.description}}</h2>
+            <h2>{{post.content}}</h2>
           </div>
         </div>
       </template>
@@ -29,8 +29,8 @@
       <template slot="singleEdit" scope="t">
         <h1>{{ $t('posts.createTitle') }}</h1>
         <br>
-        <input class="f f-input" type="text" v-model="t.item.name">
-        <textarea class="f f-input" type="text" v-model="t.item.desc"></textarea>
+        <input class="f f-input" type="text" v-model="t.item.title" placeholder="Title">
+        <textarea class="f f-input" type="text" v-model="t.item.content" placeholder="Content"></textarea>
       </template>
     </page>
   </div>

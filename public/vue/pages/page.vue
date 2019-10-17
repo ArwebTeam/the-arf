@@ -86,7 +86,8 @@
       allowView: Boolean,
       allowEdit: Boolean,
       allowDelete: Boolean,
-      enableDirectEdit: Boolean
+      enableDirectEdit: Boolean,
+      tags: Object
     },
     methods: {
       getPageParams: function (gotoPage, relPage, perPage) {
@@ -96,7 +97,11 @@
         }
       },
       doFetch: async function () {
-        const res = await window.fetch(`/api/${this.resource}?` + String(new URLSearchParams(this.$route.query)))
+        const params = {}
+        Object.assign(params, this.$route.query)
+        Object.assign(params, this.tags)
+
+        const res = await window.fetch(`/api/${this.resource}?` + String(new URLSearchParams(params)))
         const data = await res.json()
 
         const totalCount = parseInt(res.headers.get('x-total-count'), 10)
@@ -207,7 +212,7 @@
       },
       submit: async function () {
         try {
-          const res = await window.fetch(`/api/${this.resource}/${this.$route.params.id === 'create' ? '' : this.$route.params.id}`, {
+          const res = await window.fetch(`/api/${this.resource}${this.$route.params.id === 'create' ? '' : '/' + this.$route.params.id}`, {
             method: 'POST',
             headers: {
               'Accept': 'application/json',
