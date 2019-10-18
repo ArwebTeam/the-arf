@@ -136,6 +136,24 @@ async function initApp () {
   try {
     user = await api.json('a/info')
 
+    api.userRefetch = async () => {
+      const dontTouch = ['config']
+
+      const newUser = await api.json('a/info')
+
+      Object.keys(user).forEach(k => {
+        if (dontTouch.indexOf(k) === -1) {
+          delete user[k]
+        }
+      })
+
+      dontTouch.forEach(k => {
+        delete newUser[k]
+      })
+
+      Object.assign(user, newUser)
+    }
+
     user.config = ui = user.config || {} // sync
 
     userValueChange()

@@ -20,6 +20,10 @@
         <a style="display: inline-block" class="btn btn-outline-secondary no-border" onclick="updateUser('email')"><i class="fas fa-check"></i></a>
       </label>
     </div>
+
+    <center>
+      <addrbox icon="fas fa-check" btn-text="Logout" :btn-click="doLogout" :info="info" />
+    </center>
   </div>
 </template>
 
@@ -27,10 +31,28 @@
 </style>
 
 <script>
+  import addrbox from './addrbox.vue'
+
   export default {
     name: 'profile',
     data () {
-      return this.$user
+      return {
+        info: {}
+      }
+    },
+    components: {
+      addrbox
+    },
+    async mounted () {
+      this.info = await this.$api.json('a/info')
+    },
+    methods: {
+      async doLogout () {
+        await this.$api.postJson('a/info/logout', {})
+        await this.$api.userRefetch()
+        window.Toast.fire({ type: 'success', title: `Signed out` })
+        this.$router.push('/')
+      }
     }
   }
 </script>

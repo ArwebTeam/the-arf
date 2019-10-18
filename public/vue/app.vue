@@ -8,7 +8,7 @@
           <i class="fa fa-bug"></i>
         </a>
         <a v-if="$user.loggedIn" style="border: none !important;" href="/profile" class="btn btn-outline-secondary">
-          <i class="fa fa-user-circle"></i> {{$user.address}}
+          <i class="fa fa-user-circle"></i> {{$user.address}} ({{balance}} AR)
         </a>
         <a v-else href="/login" class="btn btn-outline-dark">
           <i class="fa fa-user-circle"></i> {{ $t('login.title') }}
@@ -41,6 +41,15 @@ export default {
     return { }
   },
   methods: {
+  },
+  computed: {
+    balance: function () {
+      const e = 100
+
+      const b = parseFloat(this.$user.balanceAr, 10)
+      const b2 = (b - (b % (1 / e))) * e
+      return Math.round(b2) / e
+    }
   }
 }
 </script>
