@@ -10,7 +10,7 @@
         <div class="topic-list" v-for="post in t.data">
           <i class="fa fa-3x icon-bulb fa-comment" :style="`background: ${str2col(post.title)};`"></i>
           <div class="topic-sub">
-            <h1>{{post.name}}</h1>
+            <h1>{{post.title}}</h1>
             <h2>{{post.content}}</h2>
           </div>
         </div>

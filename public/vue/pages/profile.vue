@@ -24,6 +24,21 @@
     <center>
       <addrbox icon="fas fa-check" btn-text="Logout" :btn-click="doLogout" :info="info" />
     </center>
+
+    <table class="table" v-if="txqueue.length">
+      <th>
+        <tr>
+          <td>ID</td>
+          <td>Src</td>
+          <td>TX</td>
+        </tr>
+      </th>
+      <tr v-for="q in txqueue">
+        <td>{{q.id}}</td>
+        <td><tt>{{q.kf}}</tt></td>
+        <td><tt style="font-size: 12px">{{JSON.stringify(q.tx)}}</tt></td>
+      </tr>
+    </table>
   </div>
 </template>
 
@@ -37,7 +52,8 @@
     name: 'profile',
     data () {
       return {
-        info: {}
+        info: {},
+        txqueue: []
       }
     },
     components: {
@@ -45,6 +61,7 @@
     },
     async mounted () {
       this.info = await this.$api.json('a/info')
+      this.txqueue = await this.$api.json('a/txqueue')
     },
     methods: {
       async doLogout () {
