@@ -12,6 +12,11 @@ async function main () {
       port: 443,
       protocol: 'https'
     },
+    arswarm: {
+      swarm: {
+        bootstrap: []
+      }
+    },
     static: {
       /* provider: arweb.static.arweave,
       config: {
