@@ -14,6 +14,7 @@ async function main () {
     },
     arswarm: {
       swarm: {
+        listen: [],
         bootstrap: []
       }
     },
