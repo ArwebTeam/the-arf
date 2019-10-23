@@ -20,5 +20,20 @@
     "title": "Login",
     "keyfile": "Arweave Keyfile",
     "error": "Error while logging in!"
+  },
+  "page": {
+    "delete": "Delete",
+    "deleted": "Deleted",
+    "saved": "Saved",
+    "deleteElement": "Delete Element %",
+    "areYouSure": "Are you sure?",
+    "createNotAllowed": "Creating items not allowed",
+    "editNotAllowed": "Editing not allowed",
+    "viewNotAllowed": "Viewing not allowed",
+    "signIn": "Perhaps you need to sign-in?"
+  },
+  "posts": {
+    "title": "Posts",
+    "createTitle": "Create post"
   }
 }

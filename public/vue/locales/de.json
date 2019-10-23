@@ -20,5 +20,20 @@
     "title": "Anmelden",
     "keyfile": "Arweave Schlüsseldatei",
     "error": "Fehler beim Anmelden!"
+  },
+  "page": {
+    "delete": "Löschen",
+    "deleted": "Gelöscht",
+    "saved": "Gespeichert",
+    "deleteElement": "Element % Löschen",
+    "areYouSure": "Sicher?",
+    "createNotAllowed": "Erstellen nicht erlaubt",
+    "editNotAllowed": "Editieren nicht erlaubt",
+    "viewNotAllowed": "Einsehen nicht erlaubt",
+    "signIn": "Eventuell ist eine Anmeldung erforderlich?"
+  },
+  "posts": {
+    "title": "Posts",
+    "createTile": "Post erstellen"
   }
 }

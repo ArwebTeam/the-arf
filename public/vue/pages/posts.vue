@@ -2,6 +2,7 @@
   <div>
     <page resource="post" :tags="{board: this.$route.params.board}" :allowCreate="$user.loggedIn">
       <template slot="header">
+        <br>
         <h1>{{ $t('posts.title') }}</h1>
         <br>
       </template>
@@ -27,6 +28,7 @@
       </template>
 
       <template slot="singleEdit" scope="t">
+        <br>
         <h1>{{ $t('posts.createTitle') }}</h1>
         <br>
         <input class="f f-input" type="text" v-model="t.item.title" placeholder="Title">

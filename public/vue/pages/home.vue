@@ -42,7 +42,7 @@
     <br>
     <br>
 
-    <topics></topics>
+    <!-- <topics></topics> -->
   </div>
 </template>
 
@@ -50,12 +50,12 @@
 </style>
 
 <script>
-  import topics from './topics.vue'
+  // import topics from './topics.vue'
   export default {
     name: 'home',
     data: () => ({ }),
     components: {
-      topics
+      // topics
     }
   }
 </script>

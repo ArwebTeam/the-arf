@@ -89,6 +89,7 @@ function state (s) {
   $('#state').text(s)
 }
 
+let hasInstalledSW = false
 async function onReady () {
   try {
     let res = await window.fetch('/sw')
@@ -102,6 +103,10 @@ async function onReady () {
   } catch (err) {
     state('Installing service worker')
 
+    if (hasInstalledSW) {
+      return voidWarranty('Service Worker was installed twice, likely failed to start. Please reload')
+    }
+
     // register the SW
     if ('serviceWorker' in navigator) {
       // Register a service worker hosted at the root of the
@@ -109,6 +114,8 @@ async function onReady () {
       navigator.serviceWorker.register('/sw.js').then(function (registration) {
         console.log('Service worker registration succeeded:', registration)
         state('Loading app')
+        hasInstalledSW = true
+        // TODO: wait until installation compleeted
         // TODO: verify latest version THEN init
         onReady()
       }, /* catch */ function (error) {
