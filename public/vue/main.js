@@ -58,9 +58,11 @@ const router = new VueRouter({
   routes: [
     {path: '/', component: require('./pages/home.vue').default},
     {path: '/settings', component: require('./pages/settings.vue').default},
+    {path: '/peers', component: require('./pages/peers.vue').default},
     {path: '/login', component: require('./pages/login.vue').default},
     {path: '/profile', component: require('./pages/profile.vue').default},
-    {path: '/r/:board/:id?', component: require('./pages/posts.vue').default},
+    {path: '/post/:id', component: require('./pages/post.vue').default},
+    {path: '/r/:board', component: require('./pages/posts.vue').default},
     {path: '*', component: require('./pages/404.vue').default}
   ]
 })

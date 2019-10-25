@@ -14,7 +14,7 @@ async function main () {
     },
     arswarm: {
       swarm: {
-        listen: [],
+        listen: ['/dnsaddr/stardust.mkg20001.io/wss/p2p-stardust/', '/dnsaddr/localhost/tcp/5892/ws/p2p-stardust/'],
         bootstrap: []
       }
     },

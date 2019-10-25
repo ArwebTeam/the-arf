@@ -1,3 +1,32 @@
+/* Post */
+
+.reply-box {
+  margin: 1em;
+  display: flex;
+}
+
+.reply-box > * {
+  margin: 1em .5em;
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.cmt-send {
+  transition: .5s;
+  background: #4444cc66;
+  cursor: pointer;
+}
+
+.cmt-send:hover {
+  background: #44cc4466;
+}
+
 /* Main elem */
 
 .icon-bulb {
