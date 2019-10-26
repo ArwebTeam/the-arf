@@ -50,7 +50,7 @@
       },
       async doLogin() {
         if (this.keyfile) {
-          const addr = await this.$api.postJson('a/account/login', this.keyfile, true)
+          const addr = await this.$api.postJson('a/account', this.keyfile, true)
           await this.$api.userRefetch()
           window.Toast.fire({ type: 'success', title: `Signed in as ${addr}` })
           this.$router.push('/')

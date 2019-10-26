@@ -34,16 +34,12 @@ async function main () {
         provider: () => {} // TODO: specify this further
       }
     }
-    /*,
-    api: {
-      mainBlock: 'BLOCKID'
-    } */
   })
 
   const arbase = require('./generated')
   await (require('arbase-crud')(a, arbase, {prefix: '/api'}))
 
-  a.route({
+  a.router.route({
     method: 'GET',
     path: '/sw',
     handler: (request, h) => h.response(true)

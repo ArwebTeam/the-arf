@@ -12,6 +12,14 @@ const api = () => {
 
       return json
     },
+    del: async (url, notJSON) => {
+      const req = await fetch(`${base}${url}`, {method: 'DELETE'})
+      const json = await (notJSON ? req.text() : req.json())
+
+      if (!notJSON) { json._req = req }
+
+      return json
+    },
     postJson: async (url, body, notJSON) => {
       const req = await fetch(`${base}${url}`, {
         method: 'POST',
