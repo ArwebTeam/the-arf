@@ -45,6 +45,7 @@ async function main () {
     handler: (request, h) => h.response(true)
   })
 
+  a.arweave.txqueue.flush()
   a.isReady()
 }
 
