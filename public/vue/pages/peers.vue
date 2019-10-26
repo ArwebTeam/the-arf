@@ -12,7 +12,7 @@
       </tr>
       <tr v-for="p in peers">
         <td>{{p.id}}</td>
-        <td><tt>{{p.addr.join(', ')}}</tt></td>
+        <td><tt>{{p.addrs.join(', ')}}</tt></td>
       </tr>
     </table>
   </div>

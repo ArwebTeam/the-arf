@@ -28,6 +28,11 @@ async function main () {
       config: {
         url: ''
       }
+    },
+    user: {
+      profile: {
+        provider: () => {} // TODO: specify this further
+      }
     }
     /*,
     api: {

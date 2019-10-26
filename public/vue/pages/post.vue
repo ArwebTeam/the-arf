@@ -1,29 +1,25 @@
 <template>
   <div>
-    <div v-if="!post.title">
-      Loading...
+    <div v-if="post.title">
+    <br>
+    <h1>{{post.title}}</h1>
+    <h3 v-for="line in post.content.split('\n')">{{line}}</h3>
+    <br>
+
+    <div class="reply-box">
+      <div @click="submitComment()" class="avatar cmt-send" style="">
+        <i style="margin-top: 8px; color: #fff; font-size: 2.5em;" class="fa fa-comment"></i>
+      </div>
+      <textarea ref="comment" v-model="commentContent" class="f f-textarea" type="text" placeholder="Write your comment..."></textarea>
     </div>
-    <div v-else>
-      <br>
-      <h1>{{post.title}}</h1>
-      <h3 v-for="line in post.content.split('\n')">{{line}}</h3>
-      <br>
 
-      <div class="reply-box">
-        <div @click="submitComment()" class="avatar cmt-send" style="">
-          <i style="margin-top: 8px; color: #fff; font-size: 2.5em;" class="fa fa-comment"></i>
-        </div>
-        <textarea ref="comment" v-model="commentContent" class="f f-textarea" type="text" placeholder="Write your comment..."></textarea>
+    <div @click="goto('/post/' + comment.id)" class="reply-box" v-for="comment in comments">
+      <div class="avatar" :style="`background: ${str2col(comment.owner)}`"></div>
+      <div>
+        <h3>{{comment.title}}</h3>
+        <h5 v-for="line in comment.content.split('\n')">{{line}}</h5>
       </div>
-
-      <div class="reply-box" v-for="comment in comments">
-        <div class="avatar" :style="`background: ${str2color(comment.owner)}`"></div>
-        <div>
-          <h3>{{comment.title}}</h3>
-          <h5 v-for="line in comment.content.split('\n')">{{line}}</h5>
-        </div>
-      </div>
-      </div>
+    </div>
     </div>
   </div>
 </template>
@@ -67,7 +63,10 @@
         this.post = await r[0]
         this.comments = await r[1]
       },
-      str2color: require('string-to-color')
+      str2col: require('string-to-color'),
+      goto (url) {
+        this.$router.push(url)
+      }
     },
     async mounted () {
       await this.refresh()

@@ -8,7 +8,7 @@
       </template>
 
       <template slot="elements" scope="t">
-        <div class="topic-list" v-for="post in t.data">
+        <div @click="goto('/post/' + post.id)" class="topic-list" v-for="post in t.data">
           <i class="fa fa-3x icon-bulb fa-comment" :style="`background: ${str2col(post.title)};`"></i>
           <div class="topic-sub">
             <h1>{{post.title}}</h1>
@@ -48,7 +48,10 @@
     name: 'posts',
     data: () => ({ }),
     methods: {
-      str2col: require('string-to-color')
+      str2col: require('string-to-color'),
+      goto (url) {
+        this.$router.push(url)
+      }
     },
     components: {
       page

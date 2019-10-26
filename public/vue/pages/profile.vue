@@ -60,7 +60,7 @@
       addrbox
     },
     async mounted () {
-      this.info = await this.$api.json('a/info')
+      this.info = await this.$api.json('a/account/logout')
       this.txqueue = await this.$api.json('a/txqueue')
     },
     methods: {

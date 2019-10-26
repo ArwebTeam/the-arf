@@ -42,7 +42,7 @@
 
           this.keyfile = await res.json()
 
-          this.info = await this.$api.postJson('a/keyfile', this.keyfile)
+          this.info = await this.$api.postJson('a/account/info', this.keyfile)
           if (!this.info.lastTXID) { this.info.lastTXID = '<none>' }
         }
 
@@ -50,7 +50,7 @@
       },
       async doLogin() {
         if (this.keyfile) {
-          const addr = await this.$api.postJson('a/info/keyfile', this.keyfile, true)
+          const addr = await this.$api.postJson('a/account/login', this.keyfile, true)
           await this.$api.userRefetch()
           window.Toast.fire({ type: 'success', title: `Signed in as ${addr}` })
           this.$router.push('/')
