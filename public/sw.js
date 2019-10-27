@@ -1,6 +1,6 @@
 global.DEBUG = true
 
-const arweb = require('../../arweb/src')
+const arweb = require('arweb')
 
 async function main () {
   const a = await arweb.sw({
