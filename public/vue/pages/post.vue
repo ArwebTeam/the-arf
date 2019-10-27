@@ -1,25 +1,37 @@
 <template>
   <div>
-    <div v-if="post.title">
-    <br>
-    <h1>{{post.title}}</h1>
-    <h3 v-for="line in post.content.split('\n')">{{line}}</h3>
-    <br>
+    <div v-if="loading">
+      <br>
+      <br>
 
-    <div class="reply-box">
-      <div @click="submitComment()" class="avatar cmt-send" style="">
-        <i style="margin-top: 8px; color: #fff; font-size: 2.5em;" class="fa fa-comment"></i>
-      </div>
-      <textarea ref="comment" v-model="commentContent" class="f f-textarea" type="text" placeholder="Write your comment..."></textarea>
-    </div>
-
-    <div @click="goto('/post/' + comment.id)" class="reply-box" v-for="comment in comments">
-      <div class="avatar" :style="`background: ${str2col(comment.owner)}`"></div>
-      <div>
-        <h3>{{comment.title}}</h3>
-        <h5 v-for="line in comment.content.split('\n')">{{line}}</h5>
+      <div class="spinner">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
       </div>
     </div>
+    <div v-else>
+      <br>
+      <h1>{{post.title}}</h1>
+      <h3 v-for="line in post.content.split('\n')">{{line}}</h3>
+      <br>
+
+      <div class="reply-box">
+        <div @click="submitComment()" class="avatar cmt-send" style="">
+          <i style="margin-top: 8px; color: #fff; font-size: 2.5em;" class="fa fa-comment"></i>
+        </div>
+        <textarea ref="comment" v-model="commentContent" class="f f-textarea" type="text" placeholder="Write your comment..."></textarea>
+      </div>
+
+      <div @click="goto('/post/' + comment.id)" class="reply-box" v-for="comment in comments">
+        <div class="avatar" :style="`background: ${str2col(comment.owner)}`"></div>
+        <div>
+          <h3>{{comment.title}}</h3>
+          <h5 v-for="line in comment.content.split('\n')">{{line}}</h5>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -33,7 +45,8 @@
     data: () => ({
       post: {},
       comments: [],
-      commentContent: ''
+      commentContent: '',
+      loading: true
     }),
     methods: {
       async submitComment () {
@@ -53,15 +66,17 @@
           }
         }
 
-        this.res = await this.$api.postJson(`post`, data)
+        this.res = await this.$api.postJson(`post`, data, true)
         this.$refs.comment.disabled = false
 
         await this.refresh()
       },
       async refresh () {
+        this.loading = true
         let r = [this.$api.json(`post/${this.$route.params.id}`), this.$api.json(`post?p=${this.$route.params.id}`)]
         this.post = await r[0]
         this.comments = await r[1]
+        this.loading = false
       },
       str2col: require('string-to-color'),
       goto (url) {
@@ -70,6 +85,11 @@
     },
     async mounted () {
       await this.refresh()
+    },
+    watch: {
+      $route (to, from){
+        this.refresh()
+      }
     }
   }
 </script>
