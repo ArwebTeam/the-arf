@@ -12,24 +12,19 @@
     <div v-else>
       <br>
       <h1>Debug</h1>
-      <h5>This is the debug page, intended for developers and nerds</h5>
+      <h5>Debugging information about the swarm and the transaction queue</h5>
 
       <br>
-      <h1>Peers ({{ peers.length }})</h1>
+      <h2>Peers ({{ peers.length }})</h2>
 
-      <table class="table">
-        <tr>
-          <td>Peer ID</td>
-          <td>Peer Addresses</td>
-        </tr>
-        <tr v-for="p in peers">
-          <td>{{p.id}}</td>
-          <td><tt>{{p.addrs.join(', ')}}</tt></td>
-        </tr>
-      </table>
+      <div v-for="p in peers" class="peer ipfs-block">
+        <h4><span class="ipfs dark">{{p.id}}</span></h4>
+        <br>
+        <span v-for="addr in p.addrs"><span class="ipfs">{{addr}}</span><br></span>
+      </div>
 
       <br>
-      <h1>TXQueue ({{ txqueue.length }})</h1>
+      <h2>TXQueue ({{ txqueue.length }})</h2>
 
       <table class="table">
         <tr>
@@ -48,6 +43,20 @@
 </template>
 
 <style lang="scss" scoped>
+  .ipfs {
+    background: #dfdfdf;
+    color: #031D2E;
+    padding: .314em;
+    border-radius: 2px;
+  }
+  .ipfs.dark {
+    color: #64C2CA;
+    background: #031D2E;
+  }
+  .ipfs-block {
+    background: #E0F2F3;
+    padding: 2em;
+  }
 </style>
 
 <script>
