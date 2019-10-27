@@ -10,6 +10,9 @@
         <a style="border: none !important;" href="/settings" class="btn btn-outline-dark">
           <i class="fas fa-cog"></i>
         </a>
+        <a style="border: none !important;" href="/debug" class="btn btn-outline-dark">
+          <i class="fab fa-connectdevelop"></i> <b>{{$user.connections}}</b>
+        </a>
         <a v-if="$user.loggedIn" style="border: none !important;" href="/profile" class="btn btn-outline-secondary">
           <i class="fa fa-user-circle"></i> {{$user.address}} ({{balance}} AR)
         </a>
