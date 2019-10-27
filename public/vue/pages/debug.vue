@@ -15,16 +15,23 @@
       <h5>Debugging information about the swarm and the transaction queue</h5>
 
       <br>
-      <h2>Peers ({{ peers.length }})</h2>
+      <h3>Our Peer</h3>
+
+      <div class="peer ipfs-block">
+        <h6><span class="ipfs dark">{{peer.id}}</span></h6>
+        <span v-for="addr in peer.addrs"><span class="ipfs">{{addr}}</span><br></span>
+      </div>
+
+      <br>
+      <h3>Peers ({{ peers.length }})</h3>
 
       <div v-for="p in peers" class="peer ipfs-block">
-        <h4><span class="ipfs dark">{{p.id}}</span></h4>
-        <br>
+        <h6><span class="ipfs dark">{{p.id}}</span></h6>
         <span v-for="addr in p.addrs"><span class="ipfs">{{addr}}</span><br></span>
       </div>
 
       <br>
-      <h2>TXQueue ({{ txqueue.length }})</h2>
+      <h3>TXQueue ({{ txqueue.length }})</h3>
 
       <table class="table">
         <tr>
