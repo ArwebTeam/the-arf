@@ -140,6 +140,10 @@ async function initApp () {
     } else {
       $('body').removeClass('bootstrap-dark').addClass('bootstrap')
     }
+
+    if (window.app) {
+      window.app.$children[0].$forceUpdate()
+    }
   }
 
   try {
@@ -189,7 +193,7 @@ async function initApp () {
       }, () => {
         userValueChange()
 
-        api.postJson('a/info/config', user.config).catch(console.error)
+        api.postJson('a/config', user.config).catch(console.error)
       })
     })
   } catch (err) {

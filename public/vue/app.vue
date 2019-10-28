@@ -4,19 +4,19 @@
       <a style="font-size: 28px" class="navbar-brand" href="/"><img src="../img/icon.svg" height="40" alt="The ARF" /> <b>arf</b></a>
 
       <div>
-        <a style="border: none !important;" href="https://github.com/mkg20001/the-arf" class="btn btn-outline-dark">
+        <a style="border: none !important;" href="https://github.com/mkg20001/the-arf" :class="'btn btn-outline-' + ($ui.dark ? 'light' : 'dark')">
           <i class="fa fa-bug"></i>
         </a>
-        <a style="border: none !important;" href="/settings" class="btn btn-outline-dark">
+        <a style="border: none !important;" href="/settings" :class="'btn btn-outline-' + ($ui.dark ? 'light' : 'dark')">
           <i class="fas fa-cog"></i>
         </a>
-        <a style="border: none !important;" href="/debug" class="btn btn-outline-dark">
+        <a style="border: none !important;" href="/debug" :class="'btn btn-outline-' + ($ui.dark ? 'light' : 'dark')">
           <i class="fab fa-connectdevelop"></i> <b>{{$user.connections}}</b>
         </a>
         <a v-if="$user.loggedIn" style="border: none !important;" href="/profile" class="btn btn-outline-secondary">
           <i class="fa fa-user-circle"></i> {{$user.address}} ({{balance}} AR)
         </a>
-        <a v-else href="/login" class="btn btn-outline-dark">
+        <a v-else href="/login" :class="'btn btn-outline-' + ($ui.dark ? 'light' : 'dark')">
           <i class="fa fa-user-circle"></i> {{ $t('login.title') }}
         </a>
       </div>
