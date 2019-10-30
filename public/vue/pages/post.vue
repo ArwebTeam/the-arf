@@ -27,8 +27,8 @@
 
       <div @click="goto('/post/' + comment.id)" class="reply-box" v-for="comment in comments">
         <div class="avatar" :style="`background: ${str2col(comment.owner)}`"></div>
+        <!-- <h3 v-if="!comment.title.startsWith('Comment from ')">{{comment.title}}</h3> -->
         <div>
-          <h3>{{comment.title}}</h3>
           <h5 v-for="line in comment.content.split('\n')">{{line}}</h5>
         </div>
       </div>
@@ -54,15 +54,13 @@
         this.commentContent = ''
         this.$refs.comment.disabled = true
 
-        let [title, ...rest] = c.split('\n')
-
         const data = {
           tags: {
             p: this.$route.params.id
           },
           item: {
-            title,
-            content: rest.join('\n')
+            title: `Comment from ${this.$user.address}`,
+            content: c
           }
         }
 
