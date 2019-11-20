@@ -220,7 +220,7 @@
             },
             body: JSON.stringify(this.$route.params.id === 'create' ? {tags: this.tags, item: this.item}  : this.item)
           })
-          const data = await res.json()
+          const data = res.status === 200 ? await res.text() : await res.json()
 
           if (data.error) {
             this.view = 'single'
@@ -230,7 +230,7 @@
             this.changeView()
           }
         } catch (err) {
-          return (this.error = this.err.toString())
+          return (this.error = err.toString())
         }
       },
       deleteElement: async function (id) {
