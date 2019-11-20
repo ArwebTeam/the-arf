@@ -11,10 +11,7 @@
     "prepublishOnly": "npm run prebuild && npm run build",
     "publish": "scripty"
   },
-  "keywords": [
-    "arweave",
-    "arbase"
-  ],
+  "keywords": ["arweave", "arbase"],
   "author": "Maciej Krüger <mkg20001@gmail.com>",
   "license": "GPL-3.0",
   "dependencies": {
@@ -26,7 +23,7 @@
     "@sentry/browser": "^5.9.1",
     "arbase": "^0.2.2",
     "arbase-crud": "^0.2.2",
-    "arweb": "^0.2.3",
+    "arweb": "^0.2.4",
     "babel-core": "^6.26.3",
     "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.3.1",
@@ -64,3 +61,4 @@
   },
   "homepage": "https://github.com/mkg20001/the-arf#readme"
 }
+
